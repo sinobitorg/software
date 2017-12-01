@@ -29,10 +29,11 @@ void HT1632C_Write(unsigned char Data,unsigned char cnt)      //MCU向HT1632C写
     unsigned char i;
     for(i=0; i<cnt; i++) {
         HT_WR=0;
-        if(Data&0x80)
+        if(Data&0x80) {
             HT_DAT=1;
-        else
+	} else {
             HT_DAT=0;
+	}
         Data<<=1;
         HT_WR=1;
     }
@@ -54,20 +55,22 @@ void HT1632C_Write_DAT(unsigned char Addr,unsigned char data[],unsigned char num
 
     for(i=0; i<8; i++) {
         HT_WR=0;
-        if(data[2*(num-1)]&0x80)
+        if(data[2*(num-1)]&0x80) {
             HT_DAT=1;
-        else
+        } else {
             HT_DAT=0;
+	}
         data[2*(num-1)]<<=1;
         HT_WR=1;
     }
 
     for(i=0; i<4; i++) {
         HT_WR=0;
-        if(data[2*num-1]&0x80)
+        if(data[2*num-1]&0x80) {
             HT_DAT=1;
-        else
+        } else {
             HT_DAT=0;
+	}
         data[2*num-1]<<=1;
         HT_WR=1;
     }
@@ -81,8 +84,9 @@ void HT1632C_clr(void)  //清屏函数/Clear function
     HT_CS=0;
     HT1632C_Write(0xa0,3);
     HT1632C_Write(0x00,7);
-    for(i=0; i<48; i++)
+    for(i=0; i<48; i++) {
         HT1632C_Write(0,8);
+    }
     HT_CS=1;
 }
 void HT1632C_Init(void)                 //HT1632C初始化函数/HT1632C Init Function
