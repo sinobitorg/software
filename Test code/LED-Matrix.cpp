@@ -22,7 +22,7 @@ DigitalOut HT_DAT(P0_21);
 
 static unsigned char show[24] = {0b00011111, 0b10000000, 0b00100000, 0b01000000, 0b01001011, 0b00100000, 0b10000000, 0b00010000, 0b10100010, 0b01010000, 0b10101110, 0b00010000, 0b10000111, 0b01010000, 0b10100100, 0b01010000, 0b10000000, 0b00010000, 0b01001101, 0b00100000, 0b00100000, 0b01000000, 0b00011111, 0b10000000};
 
-static unsigned char com[12] = {0x00,0x04,0x08,0x0C,0x10,0x14,0x18,0x1C,0x20,0x24,0x28,0x2C};
+static unsigned char com[12] = {0x00, 0x04, 0x08, 0x0C, 0x10, 0x14, 0x18, 0x1C, 0x20, 0x24, 0x28, 0x2C};
 
 void HT1632C_Write(unsigned char Data,unsigned char cnt)      //MCU向HT1632C写数据函数，高位在前/MCU writes the data to ht1632c, and the high position is in front
 {
