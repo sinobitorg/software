@@ -24,7 +24,7 @@ static unsigned char show[24] = {0b00011111, 0b10000000, 0b00100000, 0b01000000,
 
 static unsigned char com[12] = {0x00, 0x04, 0x08, 0x0C, 0x10, 0x14, 0x18, 0x1C, 0x20, 0x24, 0x28, 0x2C};
 
-void HT1632C_Write(unsigned char Data,unsigned char cnt)      //MCU向HT1632C写数据函数，高位在前/MCU writes the data to ht1632c, and the high position is in front
+void HT1632C_Write(unsigned char Data, unsigned char cnt)      //MCU向HT1632C写数据函数，高位在前/MCU writes the data to ht1632c, and the high position is in front
 {
     unsigned char i;
     for(i=0; i<cnt; i++) {
@@ -46,7 +46,7 @@ void HT1632C_Write_CMD(unsigned char cmd)                     //MCU向HT1632c写
     HT_CS=1;
 }
 
-void HT1632C_Write_DAT(unsigned char Addr,unsigned char data[],unsigned char num)
+void HT1632C_Write_DAT(unsigned char Addr, unsigned char data[], unsigned char num)
 {
     unsigned char i;
     HT_CS=0;
