@@ -57,7 +57,7 @@ Because much of technical education in China originates in the West, Chinese des
 
 With tech such a large part of our lives, and nearly all that tech Western in design and functionality, "modern" becomes synonymous with "Western" and we lose something of our history and culture. It's knives and forks instead of chopsticks, it's a latte in a mug instead of a red clay pot of Pu'er tea. All minor things, but it's a little bit of ourselves being chipped away every day. If the opportunity arises to reincorporate elements of our rich cultural tradition and offer it to children- it is essential to seize it.
 
-The octagonal shape of the sino:bit is based on the Bagua- the eight trigrams used in Taoist cosmology and ancient Chinese philosophy. The Bagua is also an essential tool in Feng Shui and offers a chance for older family members to share this knowledge with young people- even collaborating with them to implement these traditions in electronic form.
+The octagonal shape of the sino:bit is based on the [Bagua](https://en.wikipedia.org/wiki/Bagua) - the eight trigrams used in Taoist cosmology and ancient Chinese philosophy. The Bagua is also an essential tool in Feng Shui and offers a chance for older family members to share this knowledge with young people- even collaborating with them to implement these traditions in electronic form.
 
 The execution of characters, the art of calligraphy, the proper structure of poems and idioms- these are all aspects of education that receive far more emphasis in China than the West. The written word is such an essential part of Chinese education and culture, the loss in teaching without it cannot be underestimated, and the benefits to having hardware that supports its display cannot be overstated.<br>
 
