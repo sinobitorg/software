@@ -37,6 +37,7 @@ void HT1632C_Write(unsigned char Data,unsigned char cnt)      //MCU向HT1632C写
         HT_WR=1;
     }
 }
+
 void HT1632C_Write_CMD(unsigned char cmd)                     //MCU向HT1632c写命令/MCU writes commands to ht1632c
 {
     HT_CS=0;
@@ -85,6 +86,7 @@ void HT1632C_clr(void)  //清屏函数/Clear function
         HT1632C_Write(0,8);
     HT_CS=1;
 }
+
 void HT1632C_Init(void)                 //HT1632C初始化函数/HT1632C Init Function
 {
     HT_CS=1;
@@ -98,7 +100,6 @@ void HT1632C_Init(void)                 //HT1632C初始化函数/HT1632C Init Fu
     HT1632C_Write_CMD(BLINK_OFF);       //关闭闪烁   /Close blink
     HT1632C_Write_CMD(LED_ON);          //打开LED显示/ Turn on LED display
 }
-
 
 void HT1632C_Read_DATA(unsigned char Addr)
 {
