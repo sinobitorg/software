@@ -20,25 +20,36 @@ DigitalOut HT_RD(P0_22);
 DigitalOut HT_WR(P0_23);
 DigitalOut HT_DAT(P0_21);
 
-static unsigned char show[24] = {0b00011111, 0b10000000, 0b00100000, 0b01000000, 0b01001011, 0b00100000, 0b10000000, 0b00010000, 0b10100010, 0b01010000, 0b10101110, 0b00010000, 0b10000111, 0b01010000, 0b10100100, 0b01010000, 0b10000000, 0b00010000, 0b01001101, 0b00100000, 0b00100000, 0b01000000, 0b00011111, 0b10000000};
+static unsigned char show[24] = {
+  0b00011111, 0b10000000,
+  0b00100000, 0b01000000,
+  0b01001011, 0b00100000,
+  0b10000000, 0b00010000,
+  0b10100010, 0b01010000,
+  0b10101110, 0b00010000,
+  0b10000111, 0b01010000,
+  0b10100100, 0b01010000,
+  0b10000000, 0b00010000,
+  0b01001101, 0b00100000,
+  0b00100000, 0b01000000,
+  0b00011111, 0b10000000
+};
 
-static unsigned char com[12] = {0x00, 0x04, 0x08, 0x0C, 0x10, 0x14, 0x18, 0x1C, 0x20, 0x24, 0x28, 0x2C};
+static unsigned char com[12] = {0x00,0x04,0x08,0x0C,0x10,0x14,0x18,0x1C,0x20,0x24,0x28,0x2C};
 
-void HT1632C_Write(unsigned char Data, unsigned char cnt)      //MCU向HT1632C写数据函数，高位在前/MCU writes the data to ht1632c, and the high position is in front
+void HT1632C_Write(unsigned char Data,unsigned char cnt)      //MCU向HT1632C写数据函数，高位在前/MCU writes the data to ht1632c, and the high position is in front
 {
     unsigned char i;
     for(i=0; i<cnt; i++) {
         HT_WR=0;
-        if(Data&0x80) {
+        if(Data&0x80)
             HT_DAT=1;
-	} else {
+        else
             HT_DAT=0;
-	}
         Data<<=1;
         HT_WR=1;
     }
 }
-
 void HT1632C_Write_CMD(unsigned char cmd)                     //MCU向HT1632c写命令/MCU writes commands to ht1632c
 {
     HT_CS=0;
@@ -47,32 +58,31 @@ void HT1632C_Write_CMD(unsigned char cmd)                     //MCU向HT1632c写
     HT_CS=1;
 }
 
-void HT1632C_Write_DAT(unsigned char Addr, unsigned char data[], unsigned char num)
+void HT1632C_Write_DAT(unsigned char Addr,const unsigned char data[],unsigned char num)
 {
+    unsigned char d;
     unsigned char i;
     HT_CS=0;
     HT1632C_Write(0xa0,3);                                    //ID:101
     HT1632C_Write(Addr<<1,7);
 
-    for(i=0; i<8; i++) {
+    for(d=data[2*(num-1)], i=0; i<8; i++) {
         HT_WR=0;
-        if(data[2*(num-1)]&0x80) {
+        if(d&0x80)
             HT_DAT=1;
-        } else {
+        else
             HT_DAT=0;
-	}
-        data[2*(num-1)]<<=1;
+        d<<=1;
         HT_WR=1;
     }
 
-    for(i=0; i<4; i++) {
+    for(d=data[2*num-1], i=0; i<4; i++) {
         HT_WR=0;
-        if(data[2*num-1]&0x80) {
+        if(d&0x80)
             HT_DAT=1;
-        } else {
+        else
             HT_DAT=0;
-	}
-        data[2*num-1]<<=1;
+        d<<=1;
         HT_WR=1;
     }
 
@@ -85,12 +95,10 @@ void HT1632C_clr(void)  //清屏函数/Clear function
     HT_CS=0;
     HT1632C_Write(0xa0,3);
     HT1632C_Write(0x00,7);
-    for(i=0; i<48; i++) {
+    for(i=0; i<48; i++)
         HT1632C_Write(0,8);
-    }
     HT_CS=1;
 }
-
 void HT1632C_Init(void)                 //HT1632C初始化函数/HT1632C Init Function
 {
     HT_CS=1;
@@ -104,6 +112,7 @@ void HT1632C_Init(void)                 //HT1632C初始化函数/HT1632C Init Fu
     HT1632C_Write_CMD(BLINK_OFF);       //关闭闪烁   /Close blink
     HT1632C_Write_CMD(LED_ON);          //打开LED显示/ Turn on LED display
 }
+
 
 void HT1632C_Read_DATA(unsigned char Addr)
 {
@@ -133,5 +142,5 @@ int main()
             HT1632C_Read_DATA(com[i]);
         }
     }
-
 }
+
